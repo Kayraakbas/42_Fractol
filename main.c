@@ -5,39 +5,54 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: omakbas <omakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/13 14:08:34 by kayraakbas        #+#    #+#             */
-/*   Updated: 2025/06/01 16:44:11 by omakbas          ###   ########.fr       */
+/*   Created: 2025/03/13 19:53:12 by omakbas           #+#    #+#             */
+/*   Updated: 2025/03/24 19:44:38 by omakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int main ()
+void	check_arg_format(char *str)
 {
-    t_fractol z;
-    t_fractol s;
-    int count;
-    double temp_real;
-    count = 42;
-    z.reel = 0;
-    z.imaginaire = 0;
+	int	i;
 
-    s.reel = 0.25;
-    s.imaginaire = 0.4;
+	i = 0;
+	while (str[i])
+	{		
+		if (!ft_isdigit(str[i]) && str[i] != '.'
+			&& (str[i] != '-' && str[i] != '+'))
+		{
+			putstr_fd(ERROR_MESSAGE, STDERR_FILENO);
+			exit(EXIT_FAILURE);
+		}
+		i++;
+	}
+}
 
-    for (int i = 0; i < count; i++)
-    {
-        temp_real = (z.reel * z.reel) - (z.imaginaire * z.imaginaire);
-        z.imaginaire = 2 * z.reel * z.imaginaire;
-        z.reel = temp_real;
+int	main(int ac, char **av)
+{
+	t_fractal	fractal;
 
-        z.reel += s.reel;
-        z.imaginaire += s.imaginaire;
-
-        printf("index: %d  z.reel = %f z.imaginaire = %f \n",i, z.reel, z.imaginaire);
-    }
-
-    printf("github deneme");
-    
-    return (0);
+	if ((2 == ac && (!ft_strncmp(av[1], "mandelbrot", 10)))
+		|| (4 == ac && !ft_strncmp(av[1], "julia", 5)))
+	{
+		fractal.name = av[1];
+		if (!ft_strncmp(av[1], "julia", 5))
+		{
+			check_arg_format(av[2]);
+			fractal.julia_x = ft_atodbl(av[2]);
+			check_arg_format(av[2]);
+			fractal.julia_y = ft_atodbl(av[3]);
+		}
+		fractal_init(&fractal);
+		fractal_render(&fractal);
+		events_init(&fractal);
+		mlx_loop(fractal.mlx_connection);
+	}
+	else
+	{
+		putstr_fd(ERROR_MESSAGE, STDERR_FILENO);
+		exit(EXIT_FAILURE);
+	}
+	return (0);
 }
