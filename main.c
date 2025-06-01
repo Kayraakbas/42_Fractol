@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kayraakbas <kayraakbas@student.42.fr>      +#+  +:+       +#+        */
+/*   By: omakbas <omakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 14:08:34 by kayraakbas        #+#    #+#             */
-/*   Updated: 2025/03/13 17:08:50 by kayraakbas       ###   ########.fr       */
+/*   Updated: 2025/06/01 16:44:11 by omakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ int main ()
 
         printf("index: %d  z.reel = %f z.imaginaire = %f \n",i, z.reel, z.imaginaire);
     }
+
+    printf("github deneme");
     
     return (0);
 }
