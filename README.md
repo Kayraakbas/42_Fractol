@@ -39,5 +39,5 @@ make
 make bonus
 
 ## 🎮 Usage
-./fractol mandelbrot
-./fractol julia -0.7 0.27015
+- **./fractol mandelbrot
+- **./fractol julia -0.7 0.27015
