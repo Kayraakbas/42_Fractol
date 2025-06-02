@@ -1,4 +1,4 @@
-# Fractol - 42 School Project
+# Fractol - 42 Network Project
 **Interactive Fractal Explorer using MiniLibX**
 
 <div align="center">
